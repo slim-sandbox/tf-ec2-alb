@@ -1,4 +1,4 @@
-# terraform apply -var="name_prefix=your-name" -var="vpc_name=your-vpc-name"
+# terraform apply -var="name_prefix=your-name" -var="vpc_name=your-vpc-name" -var="aws_region=ap-southeast-1"
 
 variable "name_prefix" {
   description = "Your name prefix to label all resources"
@@ -10,16 +10,20 @@ variable "vpc_name" {
   type        = string
 }
 
+variable "aws_region" {
+  description = "AWS region to create resources in"
+  type        = string
+
+  validation {
+    condition     = contains(["us-east-1", "ap-southeast-1"], var.aws_region)
+    error_message = "Invalid AWS region. Allowed values are: us-east-1, ap-southeast-1."
+  }
+}
+
 variable "aws_profile" {
   description = "AWS CLI profile to use for Terraform configuration"
   type        = string
   default     = "default"
-}
-
-variable "aws_region" {
-  description = "AWS region to create resources in"
-  type        = string
-  default     = "ap-southeast-1"
 }
 
 variable "file_content" {

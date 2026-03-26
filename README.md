@@ -15,7 +15,7 @@ terrafrom apply
 Alternatively, you may pass in the values directly by adding the `-var` flag.
 
 ```sh
-terraform apply -var="name_prefix=your-name" -var="vpc_name=your-vpc-name"
+terraform apply -var="name_prefix=your-name" -var="vpc_name=your-vpc-name -var="aws_region=ap-southeast-1"
 ```
 
 Another way is to include a `values.tfvars` and then use the `-var-file` flag.
@@ -23,6 +23,7 @@ Another way is to include a `values.tfvars` and then use the `-var-file` flag.
 ```hcl
 name_prefix = "your-name"
 vpc_name = "your-vpc"
+aws_region = "ap-southeast-1"
 ```
 
 ```sh
