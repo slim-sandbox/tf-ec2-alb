@@ -6,7 +6,7 @@ variable "name_prefix" {
 variable "instance_type" {
   description = "Instance type of ec2"
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "vpc_id" {
@@ -17,4 +17,10 @@ variable "vpc_id" {
 variable "public_subnet_ids" {
   description = "Public subnet ids"
   type        = list(string)
+}
+
+variable "file_content" {
+  description = "File content of user data"
+  type        = string
+  default = "webapp"
 }

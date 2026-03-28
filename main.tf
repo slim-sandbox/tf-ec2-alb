@@ -5,13 +5,12 @@ locals {
 module "web_app" {
   source = "./modules/web_app"
 
-  name_prefix = local.name_prefix
-
-  instance_type = "t2.micro"
+  name_prefix   = local.name_prefix
+  instance_type = var.instance_type
+  file_content  = var.file_content
 
   vpc_id            = data.aws_vpc.selected.id
   public_subnet_ids = data.aws_subnets.public.ids
-
 }
 
 module "alb" {

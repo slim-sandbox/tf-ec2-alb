@@ -26,3 +26,7 @@ data "aws_subnets" "private" {
     values = ["*private*"]
   }
 }
+
+data "aws_ec2_instance_type" "selected" {
+  instance_type = var.instance_type
+}
